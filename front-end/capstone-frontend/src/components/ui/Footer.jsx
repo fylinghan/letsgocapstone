@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Martlogo from "../assets/sgcardmart.png";
+import Martlogo from "/images/sgcardmart.png";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import { SocialIcon } from "react-social-icons";

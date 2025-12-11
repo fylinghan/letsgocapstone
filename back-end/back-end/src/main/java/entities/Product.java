@@ -38,6 +38,8 @@ public abstract class Product {
     @OneToMany(mappedBy = "productid")
     private List<OrderItem> orderItem;
 
+    private String imgPath;
+
     public enum ProductType{
         CARD,
         DECK,

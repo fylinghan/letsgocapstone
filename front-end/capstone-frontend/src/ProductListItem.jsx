@@ -1,20 +1,18 @@
 import { Card } from "@/components/ui/card";
 
 function ProductListItem({ product }) {
-  // Normalize naming so all types still work
   const displayName = product.cardName || product.name;
-  const displaySet  = product.setName || product.series || "";
+  const displaySet  = product.setName;
 
-  // Type-based styles
   let borderColor = "";
   switch (product.type) {
     case "card":
-      borderColor = "border-yellow-400"; // golden vibe
+      borderColor = "border-gray-200";
       break;
     case "pack":
       borderColor = "border-blue-400";
       break;
-    case "battle deck":
+    case "deck":
       borderColor = "border-purple-400";
       break;
     default:
@@ -39,9 +37,10 @@ function ProductListItem({ product }) {
         <div className="text-blue-600 font-bold">
           ${Number(product.price).toFixed(2)}
         </div>
+
         {product.type === "pack" && (
           <button
-            className="mt-4 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-400 hover:text-black"
+            className="mt-4 w-full bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white"
           >
             Buy Pack
           </button>

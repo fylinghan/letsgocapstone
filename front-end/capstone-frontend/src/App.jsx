@@ -18,7 +18,12 @@ function App() {
     { id: 'e1', image: '/images/surging.png', type: "pack", name: 'Scarlet & Violet - Surging Sparks', price: 6.90},
     { id: 'e2', image: '/images/stellar.png', type: "pack", name: 'Scarlet & Violet - Stellar Crown', price: 8.00},
     { id: 'e3', image: '/images/destined.png', type: "pack", name: 'Scarlet & Violet - Destined Rivals', price: 9.00},
-  ]
+  ];
+  const deckList = [
+    { id: 'e1', image: '/images/corvi.jpg', type: "deck", name: 'V Battle Deck - Corviknight', price: 25.00},
+    { id: 'e2', image: '/images/corvi.jpg', type: "deck", name: 'V Battle Deck - Corviknight', price: 25.00},
+    { id: 'e3', image: '/images/corvi.jpg', type: "deck", name: 'V Battle Deck - Corviknight', price: 25.00},
+  ];
 
   return (
     <div>
@@ -40,20 +45,29 @@ function App() {
       
       {/* Latest listings */}
       <h1 className="m-4 p-2">Latest Card Listings</h1>
-      <div className="shadow">
+      <div className="shadow pb-8">
         <div className="flex justify-center">
           <ProductList items={latestCardList} />
         </div>
-        <div className="flex justify-center"><Button className="w-80 my-6 bg-gray-200 hover:bg-black text-black hover:text-white">Browse more cards</Button></div>
+        <div className="flex justify-center"><Button className="mt-4 w-1/5 bg-black text-white py-2 rounded-lg hover:bg-gray-400 hover:text-black">Browse more cards</Button></div>
       </div>
 
       {/* Booster Packs */}
-      <div className="bg-gray-200">
+      <div className="bg-gray-300 pb-8">
         <h1 className="p-8 text-center">Booster Packs</h1>
         <div className="flex justify-center">
           <ProductList items={packsList} />
         </div>
-        <div className="flex justify-center"><Button className="w-80 m-4 bg-gray-200 hover:bg-black text-black hover:text-white">Browse more cards</Button></div>
+        <div className="flex justify-center"><Button className="mt-6 w-1/5 bg-black text-white py-2 rounded-lg hover:bg-gray-400 hover:text-black">See more booster packs</Button></div>
+      </div>
+
+      {/* Battle Decks */}
+      <div>
+        <h1 className="p-4 pt-8 pb-8">Battle Decks</h1>
+        <div className="flex justify-center">
+          <ProductList items={deckList} />
+        </div>
+        <div className="flex justify-center"><Button className="m-6 w-1/5 bg-black text-white py-2 rounded-lg hover:bg-gray-400 hover:text-black">View more decks</Button></div>
       </div>
       <Footer/>
     </div>

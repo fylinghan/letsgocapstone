@@ -20,7 +20,7 @@ public abstract class Product {
     private BigDecimal price;
 
     @Column(nullable=false)
-    private String name;
+    private String productName;
 
     @Column(nullable=false)
     private String seriesName;
@@ -28,17 +28,17 @@ public abstract class Product {
     @Column(nullable = false, updatable = false)
     private LocalDateTime dateAdded;
 
-    @ManyToOne
-    @JoinColumn(name = "userid")
-    private User user;
-
     @Column(nullable = false, updatable = false)
     private ProductType productType;
 
+    private String imgPath;
+
+    @ManyToOne
+    @JoinColumn(name = "useremail")
+    private User user;
+
     @OneToMany(mappedBy = "productid")
     private List<OrderItem> orderItem;
-
-    private String imgPath;
 
     public enum ProductType{
         CARD,

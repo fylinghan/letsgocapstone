@@ -26,13 +26,6 @@ public class Order {
     private LocalDateTime orderDate;
 
     private String shippingAddress;
-
-    public enum status {
-        ORDERED,
-        SHIPPED,
-        DELIVERED
-    }
-
     @ManyToOne
     @JoinColumn(name = "userid")
     private User user;
@@ -40,4 +33,9 @@ public class Order {
     @OneToMany(mappedBy = "orderid")
     private List<OrderItem> orderedItems;
 
+    public enum status {
+        ORDERED,
+        SHIPPED,
+        DELIVERED
+    }
 }

@@ -10,11 +10,11 @@ function Navbar() {
     <>
       <nav>
         <div className="leftGroup">
-          <img className="logo" src={Martlogo} alt="website logo" />
+          <Link to="/"><img className="logo" src={Martlogo} alt="website logo" /></Link>
           <ul className="leftSide">
-            <li>Cards</li>
-            <li>Booster Packs</li>
-            <li>Battle Decks</li>
+            <Link to="/cards">Cards</Link>
+            <Link to="/packs">Booster Packs</Link>
+            <Link to="/decks">Battle Decks</Link>
           </ul>
         </div>
 
@@ -22,7 +22,8 @@ function Navbar() {
           <li>
             <input type="text" placeholder="Search..."/>
           </li>
-          <li>Register/Login</li>
+          <Link to="/register">Register</Link>
+          <Link to="/login">Login</Link>
         </ul>
       </nav>
     </>

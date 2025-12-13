@@ -2,24 +2,7 @@ import ProductList from "./ProductList";
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom";
 
-function Home() {
-   const latestCardList = [
-    { id: 'e1', image: '/images/umbreon.jpg', type: "card", cardName: 'Umbreon EX', setName: 'Eevee Grove', price: 99.90},
-    { id: 'e2', image: '/images/umbreon.jpg', type: "card", cardName: 'Umbreon', setName: 'Eevee Grove', price: 99.00},
-    { id: 'e3', image: '/images/pikachu.jpg', type: "card", cardName: 'Pikachu', setName: 'Surging Sparks', price: 79.00},
-    { id: 'e4', image: '/images/pikachu.jpg', type: "card", cardName: 'Pikachu EX', setName: 'Surging Sparks', price: 79.90},
-    { id: 'e5', image: '/images/bulbasaur.jpg', type: "card", cardName: 'Bulbasaur AR', setName: 'Mega Evolution', price: 69.00},
-  ];
-  const packsList = [
-    { id: 'e1', image: '/images/surging.png', type: "pack", name: 'Scarlet & Violet - Surging Sparks', price: 6.90},
-    { id: 'e2', image: '/images/stellar.png', type: "pack", name: 'Scarlet & Violet - Stellar Crown', price: 8.00},
-    { id: 'e3', image: '/images/destined.png', type: "pack", name: 'Scarlet & Violet - Destined Rivals', price: 9.00},
-  ];
-  const deckList = [
-    { id: 'e1', image: '/images/corvi.jpg', type: "deck", name: 'V Battle Deck - Corviknight', price: 25.00},
-    { id: 'e2', image: '/images/corvi.jpg', type: "deck", name: 'V Battle Deck - Corviknight', price: 25.00},
-    { id: 'e3', image: '/images/corvi.jpg', type: "deck", name: 'V Battle Deck - Corviknight', price: 25.00},
-  ];
+function Home({latestCardList, packsList, deckList}) {
 
   return (
     <div>

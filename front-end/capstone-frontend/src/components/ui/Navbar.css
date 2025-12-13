@@ -15,39 +15,11 @@
   --color-button-hover: #1D4ED8; /* Darker CTA Blue */
 }
 
-nav {
-    display: flex;
-    background-color: #fafafa;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    font-family: 'Poppins';
-    color: #1F2937;
-    font-size: 1.2rem;
-    padding-left: 1rem;
-    padding-right: 4rem;
-}
-
-/* Group logo + leftSide together */
-.leftGroup {
-  display: flex;
-  align-items: center;
-  gap: 1rem;                      /* spacing between logo and links */
-}
-
 .logo {
   width: 120px;
   height: auto;
 }
 
-
-.leftSide,.rightSide {
-    list-style-type: none;
-    justify-content: space-between;
-    text-align: justify;
-    display: flex;
-    gap: 1rem;
-}
 
 .rightSide {
     gap: 2rem;

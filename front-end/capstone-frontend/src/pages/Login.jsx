@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({setUser}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();   // Prevent page reload on submit
@@ -16,7 +18,10 @@ function Login() {
     }
 
     alert(`Logged in with email: ${email}`);
-    <Route path="/" element ={<Home />} />
+    const username = email.split("@")[0];
+    setUser({ username });
+
+    navigate("/");
   }
 
   return (
@@ -42,7 +47,7 @@ function Login() {
         required                       // HTML5 validation attribute
       />
 
-      <Button type="submit" className="w-full my-4 hover:bg-gray-400 hover:text-black">
+      <Button type="submit" className="w-full mt-2 hover:bg-gray-400 hover:text-black">
         Login
       </Button>
       <Link to="/register" className="text-center">New User? Sign up here</Link>

@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate, Outlet } from "react-router";
 import { useState } from "react";
 import Home from "./pages/Home";
-// import Register from "./pages/Register";
+import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cards from "./pages/Cards";
 import Packs from "./pages/Packs";
@@ -14,11 +14,11 @@ function App() {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar user={user} setUser={setUser}/>
       <Routes>
         <Route path="/" element ={<Home />} />
-        <Route path="/login" element ={<Login />} />
-        {/* <Route path="/register" element ={<Register />} /> */}
+        <Route path="/login" element ={<Login setUser={setUser} />} />
+        <Route path="/register" element ={<Register setUser={setUser} />} />
         <Route path="/cards" element ={<Cards />} />
         <Route path="/packs" element ={<Packs />} />
         <Route path="/decks" element ={<Decks />} />

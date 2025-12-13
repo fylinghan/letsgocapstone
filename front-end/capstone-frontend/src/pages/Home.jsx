@@ -1,5 +1,6 @@
 import ProductList from "./ProductList";
 import { Button } from "@/components/ui/button"
+import { Link } from "react-router-dom";
 
 function Home() {
    const latestCardList = [
@@ -31,9 +32,9 @@ function Home() {
         />
         <div className="bg-gray-300 w-1/4 h-full flex flex-col justify-center items-center text-center">
           <p className="text-xl font-semibold">Eevee Grove Now Available!</p>
-          <Button className="w-4/5 mt-4 bg-white hover:bg-black text-black hover:text-white">
-            Shop now
-          </Button>
+            <Link to="/cards">
+                <Button className="w-40 mt-4 bg-white hover:bg-black text-black hover:text-white">Shop now</Button>
+            </Link>
         </div>
       </div>
       
@@ -43,8 +44,12 @@ function Home() {
         <div className="flex justify-center">
           <ProductList items={latestCardList} />
         </div>
-        <div className="flex justify-center"><Button className="mt-4 w-1/5 bg-black text-white py-2 
-        rounded-lg hover:bg-gray-400 hover:text-black">Browse more cards</Button></div>
+        <div className="flex justify-center">
+            <Link to="/cards">
+                <Button className="mt-4 w-80 bg-black text-white py-2 rounded-lg hover:bg-gray-400 
+                hover:text-black">Browse more cards</Button>
+            </Link>
+        </div>
       </div>
 
       {/* Booster Packs */}
@@ -53,8 +58,12 @@ function Home() {
         <div className="flex justify-center">
           <ProductList items={packsList} />
         </div>
-        <div className="flex justify-center"><Button className="mt-6 w-1/5 bg-black text-white py-2 
-        rounded-lg hover:bg-gray-400 hover:text-black">See more booster packs</Button></div>
+        <div className="flex justify-center">
+            <Link to="/packs">
+                <Button className="mt-8 w-80 bg-black text-white py-2 rounded-lg hover:bg-gray-400 
+                hover:text-black">See more booster packs</Button>
+            </Link>
+        </div>
       </div>
 
       {/* Battle Decks */}

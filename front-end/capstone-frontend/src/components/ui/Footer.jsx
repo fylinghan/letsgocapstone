@@ -21,10 +21,8 @@ function Footer() {
         <div className="footerRightGroup">
             <ul>
                 <li className="menuHead">Help</li>
-                <li>FAQ</li>
-                <li>Customer service</li>
-                <li>How to guides</li>
-                <li>Contact us</li>
+                <li><Link to="/faq">FAQ</Link></li>
+                <li><Link to="contact">Contact us</Link></li>
             </ul>
 
             <ul>

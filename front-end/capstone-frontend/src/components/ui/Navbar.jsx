@@ -1,10 +1,8 @@
-import { useState } from "react";
 import Martlogo from "/images/sgcardmart.png";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "./button"
-import "./Navbar.css";
+import { Button } from "./button";
 
-function Navbar({user}) {
+function Navbar({user, setUser}) {
   const navigate = useNavigate();
 
   function handleLogout() {
@@ -14,9 +12,9 @@ function Navbar({user}) {
 
   return (
     <>
-      <nav className="flex flex-wrap justify-between px-4 items-center bg-white text-black text-xl font-poppins">
+      <nav className="sticky top-0 left-0 right-0 flex flex-wrap justify-between px-4 items-center bg-white text-black text-xl font-poppins">
           <div className="flex items-center text-center">
-            <Link to="/"><img className="logo mr-8" src={Martlogo} alt="website logo" /></Link>
+            <Link to="/"><img className="w-40 p-2 mr-8" src={Martlogo} alt="website logo" /></Link>
             <Link to="/cards" className="hover:bg-gray-300 p-4 rounded">Cards</Link>
             <Link to="/packs" className="hover:bg-gray-300 p-4 rounded">Booster Packs</Link>
             <Link to="/decks" className="hover:bg-gray-300 p-4 rounded">Battle Decks</Link>

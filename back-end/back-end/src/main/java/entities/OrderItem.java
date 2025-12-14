@@ -11,23 +11,24 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "orderitem")
+@Table(name = "orderitems")
 public class OrderItem {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="orderitemid")
     private Long orderItemId;
 
     @ManyToOne
-    @Column(name="orderid", nullable = false, updatable = false)
-    private Order orderId;
+    @JoinColumn(name="orderid", nullable = false, updatable = false)
+    private Order order;
 
     @ManyToOne
-    @Column(name = "productid", nullable = false, updatable = false)
+    @JoinColumn(name = "productid", nullable = false, updatable = false)
     private Product product;
 
-    @Column(name="quantity")
+    @Column(name="quantity",nullable = false)
     private int quantity;
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "userstable")
 public class User {
 
     @Id
@@ -23,9 +23,9 @@ public class User {
     @Column(name="pw")
     private String password;
 
-    @OneToMany(mappedBy = "userid")
+    @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
-    @OneToMany(mappedBy = "userid")
+    @OneToMany(mappedBy = "user")
     private List<Product> cards;
 }

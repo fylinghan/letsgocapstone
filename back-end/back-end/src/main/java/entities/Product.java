@@ -1,36 +1,45 @@
 package entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-public abstract class Product {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "products")
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="productid")
     private Long productID;
 
-    @Column(nullable=false)
+    @Column(name="stock", nullable=false)
     private int stock;
 
-    @Column(nullable=false)
+    @Column(name="price", nullable=false)
     private BigDecimal price;
 
-    @Column(nullable=false)
+    @Column(name="productname", nullable=false)
     private String productName;
 
-    @Column(nullable=false)
+    @Column(name="seriesname", nullable=false)
     private String seriesName;
 
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime dateAdded;
+    @Column(name="dateadded", nullable = false, updatable = false)
+    private LocalDate dateAdded;
 
-    @Column(nullable = false, updatable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name="productype", nullable = false)
     private ProductType productType;
 
+    @Column(name="imgpath")
     private String imgPath;
 
     @ManyToOne

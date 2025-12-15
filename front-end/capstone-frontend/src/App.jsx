@@ -6,7 +6,6 @@ import Login from "./pages/Login";
 import Cards from "./pages/Cards";
 import Packs from "./pages/Packs";
 import Decks from "./pages/Decks";
-import ProductList from "./pages/ProductList";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 
@@ -47,7 +46,7 @@ function App() {
         <Route path="/" element ={<Home latestCardList={latestCardList} packsList={packsList} deckList={deckList}/>} />
         <Route path="/login" element ={<Login setUser={setUser} />} />
         <Route path="/register" element ={<Register setUser={setUser} />} />
-        <Route path="/cards" element ={<Cards products={latestCardList} />} />
+        <Route path="/cards" element ={<Cards />} />
         <Route path="/packs" element ={<Packs />} />
         <Route path="/decks" element ={<Decks />} />
       </Routes>

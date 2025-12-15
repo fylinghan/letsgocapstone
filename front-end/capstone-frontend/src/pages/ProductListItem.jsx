@@ -1,18 +1,18 @@
 import { Card } from "@/components/ui/card";
 
 function ProductListItem({ product }) {
-  const displayName = product.cardName || product.name;
-  const displaySet  = product.setName;
+  const displayName = product.productName;
+  const displaySet  = product.seriesName;
 
   let borderColor = "";
-  switch (product.type) {
-    case "card":
+  switch (product.productType) {
+    case "CARD":
       borderColor = "border-gray-200";
       break;
-    case "pack":
+    case "PACK":
       borderColor = "border-blue-400";
       break;
-    case "deck":
+    case "DECK":
       borderColor = "border-purple-400";
       break;
     default:
@@ -20,11 +20,11 @@ function ProductListItem({ product }) {
   }
 
   return (
-    <li>
-      <Card className={`text-center p-4 m-4 items-center border-2 ${borderColor}`}>
+    <li className="w-56">
+      <Card className={`h-full text-center p-4 m-4 items-center border-2 ${borderColor}`}>
         <img
           className="w-32 h-42 mx-auto mb-4"
-          src={product.image}
+          src={"http://localhost:8080" + product.imgPath}
           alt={displayName}
         />
 
@@ -38,7 +38,7 @@ function ProductListItem({ product }) {
           ${Number(product.price).toFixed(2)}
         </div>
 
-        {product.type === "pack" && (
+        {product.productType === "PACK" && (
           <button
             className="mt-4 w-full bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white"
           >

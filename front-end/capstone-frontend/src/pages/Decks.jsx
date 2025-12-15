@@ -1,6 +1,13 @@
+import MarketPage from "./MarketPage";
+
 function Decks() {
     return (
-        <p>Decks</p>
-    )
+        <MarketPage
+            title="Battle Decks"
+            endpoint="api/products/decks"
+            banner="/images/deckbanner.jpg"
+        />
+    );
+
 }
 export default Decks

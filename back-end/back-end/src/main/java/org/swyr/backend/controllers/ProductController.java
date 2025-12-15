@@ -1,12 +1,12 @@
-package controllers;
+package org.swyr.backend.controllers;
 
-import dtos.ProductDTO;
-import entities.Product;
+import org.swyr.backend.dtos.ProductDTO;
+import org.swyr.backend.entities.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import services.ProductService;
+import org.swyr.backend.services.ProductService;
 
 import java.io.File;
 import java.io.IOException;
@@ -99,7 +99,7 @@ public class ProductController {
     }
 
     @PostMapping("/list/card/upload")
-    public ResponseEntity<String> uploadCardImg(@RequestParam MultipartFile image) {
+    public ResponseEntity<String> uploadCardImg(@RequestParam("file") MultipartFile image) {
         if (image.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No file uploaded");
         }
@@ -110,16 +110,16 @@ public class ProductController {
         }
 
         try{
-            String uploadDir = "uploads/";
+            String uploadDir = "uploads/cards/";
             String originalName = image.getOriginalFilename();
             String extension = originalName.substring(originalName.lastIndexOf("."));
             String uniqueName = UUID.randomUUID().toString() + extension;
             File dest = new File(uploadDir + uniqueName);
             image.transferTo(dest);
-            return ResponseEntity.ok("http://localhost:8080/" + uniqueName);
+            return ResponseEntity.ok("http://localhost:8080/cards/" + uniqueName);
 
         } catch (IOException e) {
-            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("unable to upload");
         }
 
     }

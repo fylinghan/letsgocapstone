@@ -1,10 +1,10 @@
-package services;
+package org.swyr.backend.services;
 
-import dtos.ProductDTO;
-import entities.Product;
+import org.swyr.backend.dtos.ProductDTO;
+import org.swyr.backend.entities.Product;
 import org.springframework.stereotype.Service;
-import repos.ProductRepository;
-import repos.UserRepository;
+import org.swyr.backend.repos.ProductRepository;
+import org.swyr.backend.repos.UserRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -38,7 +38,7 @@ public class ProductService {
     }
 
     public List<Product> getLatest() {
-        return productRepository.findTop5ByOrderByDateaddedDesc();
+        return productRepository.findTop5ByOrderByDateAddedDesc();
     }
 
     public Product listCard(ProductDTO productDTO) {
@@ -62,19 +62,19 @@ public class ProductService {
     }
 
     public Product getLatestPack() {
-        return productRepository.findTop1ByProductTypeOrderByDateaddedDesc(Product.ProductType.PACK);
+        return productRepository.findTop1ByProductTypeOrderByDateAddedDesc(Product.ProductType.PACK);
     }
 
     public List<Product> getCardsforHomepage() {
-        return productRepository.findTop8ByProductTypeOrderByDateaddedDesc(Product.ProductType.CARD);
+        return productRepository.findTop8ByProductTypeOrderByDateAddedDesc(Product.ProductType.CARD);
     }
 
     public List<Product> getDecksforHomepage() {
-        return productRepository.findTop8ByProductTypeOrderByDateaddedDesc(Product.ProductType.DECK);
+        return productRepository.findTop8ByProductTypeOrderByDateAddedDesc(Product.ProductType.DECK);
     }
 
     public List<Product> getPacksforHomepage() {
-        return productRepository.findTop3ByProductTypeOrderByDateaddedDesc(Product.ProductType.PACK);
+        return productRepository.findTop3ByProductTypeOrderByDateAddedDesc(Product.ProductType.PACK);
     }
 
 }

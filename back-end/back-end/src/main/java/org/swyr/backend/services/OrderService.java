@@ -1,13 +1,10 @@
-package services;
+package org.swyr.backend.services;
 
-import dtos.OrderDTO;
-import entities.Order;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.swyr.backend.dtos.OrderDTO;
+import org.swyr.backend.entities.Order;
 import org.springframework.stereotype.Service;
-import repos.OrderItemRepository;
-import repos.OrderRepository;
-import repos.ProductRepository;
-import repos.UserRepository;
+import org.swyr.backend.repos.OrderRepository;
+import org.swyr.backend.repos.UserRepository;
 
 import java.time.LocalDate;
 import java.util.List;

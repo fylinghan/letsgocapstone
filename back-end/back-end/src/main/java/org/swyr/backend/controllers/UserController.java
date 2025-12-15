@@ -1,4 +1,4 @@
-package controllers;
+package org.swyr.backend.controllers;
 
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;

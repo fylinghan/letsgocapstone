@@ -1,12 +1,11 @@
-package services;
+package org.swyr.backend.services;
 
-import dtos.OrderItemDTO;
-import entities.Order;
-import entities.OrderItem;
+import org.swyr.backend.dtos.OrderItemDTO;
+import org.swyr.backend.entities.Order;
+import org.swyr.backend.entities.OrderItem;
 import org.springframework.stereotype.Service;
-import repos.OrderItemRepository;
-import repos.OrderRepository;
-import repos.ProductRepository;
+import org.swyr.backend.repos.OrderItemRepository;
+import org.swyr.backend.repos.ProductRepository;
 
 import java.util.List;
 
@@ -32,6 +31,6 @@ public class OrderItemService {
     }
 
     public List<OrderItem> getOrderItemsByOrderId(Long orderId) {
-        return orderItemRepository.getOrderItemsByOrderId(orderId);
+        return orderItemRepository.getOrderItemsByOrderOrderId(orderId);
     }
 }

@@ -1,10 +1,9 @@
-package services;
+package org.swyr.backend.services;
 
-import entities.User;
+import org.swyr.backend.entities.User;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
-import repos.UserRepository;
+import org.swyr.backend.repos.UserRepository;
 
 import java.util.regex.Pattern;
 
@@ -24,7 +23,7 @@ public class UserService {
             if (user.getPassword().equals(password)) {
                 return true;
             } else  {
-                throw new BadCredentialsException("Incorrect password");
+                throw new IllegalArgumentException("Incorrect password");
             }
         }else {
             throw new EntityNotFoundException("User not found.");

@@ -1,6 +1,6 @@
-package repos;
+package org.swyr.backend.repos;
 
-import entities.Order;
+import org.swyr.backend.entities.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package entities;
+package org.swyr.backend.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

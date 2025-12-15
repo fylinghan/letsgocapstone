@@ -1,11 +1,11 @@
-package controllers;
+package org.swyr.backend.controllers;
 
-import dtos.OrderDTO;
-import entities.Order;
+import org.swyr.backend.dtos.OrderDTO;
+import org.swyr.backend.entities.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import services.OrderService;
+import org.swyr.backend.services.OrderService;
 
 import java.util.List;
 

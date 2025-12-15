@@ -1,5 +1,6 @@
-package entities;
+package org.swyr.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,17 +37,19 @@ public class Product {
     private LocalDate dateAdded;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="productype", nullable = false)
+    @Column(name="producttype", nullable = false)
     private ProductType productType;
 
     @Column(name="imgpath")
     private String imgPath;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "useremail")
     private User user;
 
-    @OneToMany(mappedBy = "productid")
+    @JsonIgnore
+    @OneToMany(mappedBy = "product")
     private List<OrderItem> orderItem;
 
     public enum ProductType{

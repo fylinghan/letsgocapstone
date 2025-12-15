@@ -1,4 +1,4 @@
-package dtos;
+package org.swyr.backend.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

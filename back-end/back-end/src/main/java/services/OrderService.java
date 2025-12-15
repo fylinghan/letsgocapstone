@@ -30,7 +30,7 @@ public class OrderService {
         return orderRepository.findByUser_Email(email);
     }
 
-    public void generateOrder(OrderDTO orderDTO) {
+    public Long generateOrder(OrderDTO orderDTO) {
         Order order = new Order();
         order.setOrderDate(LocalDate.now());
         order.setUser(userRepository.findById(orderDTO.getEmail()).orElse(null));
@@ -38,6 +38,7 @@ public class OrderService {
         order.setShippingStatus(Order.status.ORDERED);
         orderRepository.save(order);
         orderItemService.storeOrderItem(orderDTO.getOrderedItems(), order);
+        return order.getOrderId();
     }
 
     public Order getOrder(Long orderId) {

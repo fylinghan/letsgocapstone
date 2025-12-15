@@ -110,12 +110,13 @@ public class ProductController {
         }
 
         try{
-            String uploadDir = "uploads/cards/";
+            String uploadDir = System.getProperty("user.dir") + "/uploads/cards/";
             String originalName = image.getOriginalFilename();
             String extension = originalName.substring(originalName.lastIndexOf("."));
-            String uniqueName = UUID.randomUUID().toString() + extension;
+            String uniqueName = UUID.randomUUID() + extension;
             File dest = new File(uploadDir + uniqueName);
             image.transferTo(dest);
+            System.out.println("help la");
             return ResponseEntity.ok("http://localhost:8080/cards/" + uniqueName);
 
         } catch (IOException e) {

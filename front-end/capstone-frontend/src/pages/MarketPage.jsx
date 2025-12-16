@@ -22,7 +22,7 @@ function MarketPage({endpoint, title, banner}) {
 
 
   useEffect(() => {
-  fetch("http://localhost:8080/products/series?type=" + title.substring(0,5))
+  fetch("http://localhost:8080/products/series?type=" + endpoint.slice(-5,-1))
     .then(res => {
       console.log("Response status:", res.status);
       return res.json();

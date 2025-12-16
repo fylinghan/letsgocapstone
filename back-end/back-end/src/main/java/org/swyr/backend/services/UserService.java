@@ -16,12 +16,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public boolean checkPassword(String email, String password) {
+    public String checkPassword(String email, String password) {
         User user = userRepository.findById(email).orElse(null);
 
         if (user != null) {
             if (user.getPassword().equals(password)) {
-                return true;
+                return user.getEmail();
             } else  {
                 throw new IllegalArgumentException("Incorrect password");
             }
@@ -31,7 +31,7 @@ public class UserService {
     }
 
 
-    public boolean registration(String username, String password) {
+    public String registration(String username, String password) {
         if(username.trim().isEmpty() || password.trim().isEmpty()) {
             throw new IllegalArgumentException("Username and/or password cannot be empty");
         }
@@ -48,7 +48,7 @@ public class UserService {
         user.setEmail(username);
         user.setPassword(password);
         userRepository.save(user);
-        return true;
+        return username + " is now registered. Please log in.";
     }
 
     /**

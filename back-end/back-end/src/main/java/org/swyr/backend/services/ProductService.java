@@ -25,7 +25,7 @@ public class ProductService {
         return productRepository.findByProductType(Product.ProductType.DECK);
     }
 
-    public Optional<Product> getProductById(Long id) {
+    public Product getProductById(Long id) {
         Product product = productRepository.findById(id).orElse(null);
         if (product == null) {
             throw new IllegalArgumentException("Product does not exist");

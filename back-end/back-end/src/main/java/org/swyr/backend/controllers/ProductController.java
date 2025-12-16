@@ -89,7 +89,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity <Optional<Product>> getProductById(@PathVariable Long id) {
+    public ResponseEntity getProductById(@PathVariable Long id) {
 
         try {
             return ResponseEntity.status(HttpStatus.OK).body(productService.getProductById(id));

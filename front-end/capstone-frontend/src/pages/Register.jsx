@@ -31,13 +31,24 @@ function Register({setUser}) {
           email:email,
           password:password
         })
-    })
+    }).then(
+      async response => {
+        if(!response.ok){
+          const errorMessage = await response.text();
+          alert(errorMessage);
+          throw new Error(errorMessage);
+        }
+      }
+    ).then(data =>{
+      alert(`Account created: ${email}`);
+      const username = email.split("@")[0];
+      setUser({ username });
+      navigate("/");
+    }).catch(err => {
+      console.error("Registration error:", err.message);
+    });
 
-    alert(`Account created: ${email}`);
-    const username = email.split("@")[0];
-    setUser({ username });
 
-    navigate("/");
   }
 
   return (

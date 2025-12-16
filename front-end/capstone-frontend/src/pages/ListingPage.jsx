@@ -19,29 +19,29 @@ function ListingPage() {
             .catch(err => console.error("Fetch error:", err));
         }, [id]);
     return (
-        <Card className="text-center p-4 m-4 items-center border-2 cursor-pointer">
-        <img
-          className="w-32 h-42 mx-auto mb-4"
-          src={"http://localhost:8080" + product.imgPath}
-          alt={product.productName}
-        />
+        <div className="flex justify-center">
+            <Card className="w-[80%] h-96 flex gap-4 items-center p-6 m-8 border-2">
+            <img
+            className="h-full mx-auto m-4"
+            src={"http://localhost:8080" + product.imgPath}
+            alt={product.productName}
+            />
+            <div className="w-1/2 ml-0 pr-8 flex flex-col justify-left">
+                <div className="font-semibold text-5xl mt-4">{product.productName}</div>
 
-        <div className="font-semibold text-lg">{product.productName}</div>
+                <div className="text-sm text-gray-500 my-2">{product.seriesName}</div>
 
-        <div className="text-sm text-gray-500 mb-2">{product.seriesName}</div>
+                <p className="text-blue-600 font-bold text-3xl">${Number(product.price).toFixed(2)}</p>
 
-        <div className="text-blue-600 font-bold">
-          ${Number(product.price).toFixed(2)}
-        </div>
+                <p className="mt-4 mb-2"> Umbreon EX from Eevee Grove set, near mint with no observable damage. Great for binder collections!</p>
 
-        {product.productType === "PACK" && (
-          <button
-            className="mt-4 w-full bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white"
-          >
-            Buy Pack
-          </button>
-        )}
-      </Card>
+                <button
+                    className="my-2 w-24 bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white">
+                    Add to cart
+                </button>
+                </div>
+            </Card>
+      </div>
         
     )
 }

@@ -31,7 +31,11 @@ public class OrderController {
 
     @PostMapping("/submit")
     public ResponseEntity submitOrder(@RequestBody OrderDTO orderDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.generateOrder(orderDTO));
+        try{
+            return ResponseEntity.status(HttpStatus.CREATED).body(orderService.generateOrder(orderDTO));
+        } catch (IllegalArgumentException ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 
 }

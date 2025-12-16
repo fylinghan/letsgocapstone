@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrderItemDTO {
 
-    private Long product_id;
+    private Long productId;
     private int quantity;
 
 }

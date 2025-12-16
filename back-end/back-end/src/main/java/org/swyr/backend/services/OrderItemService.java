@@ -14,19 +14,22 @@ public class OrderItemService {
 
     private final ProductRepository productRepository;
     private final OrderItemRepository orderItemRepository;
+    private final ProductService productService;
 
-    public OrderItemService(ProductRepository productRepository, OrderItemRepository orderItemRepository) {
+    public OrderItemService(ProductRepository productRepository, OrderItemRepository orderItemRepository, ProductService productService) {
         this.productRepository = productRepository;
         this.orderItemRepository = orderItemRepository;
+        this.productService = productService;
     }
 
     public void storeOrderItem(List<OrderItemDTO> orderItemsDTO, Order order) {
         for (OrderItemDTO orderItemDTO : orderItemsDTO) {
             OrderItem orderItem = new OrderItem();
             orderItem.setOrder(order);
-            orderItem.setProduct(productRepository.findById(orderItemDTO.getProduct_id()).orElse(null));
+            orderItem.setProduct(productRepository.findById(orderItemDTO.getProductId()).orElse(null));
             orderItem.setQuantity(orderItemDTO.getQuantity());
             orderItemRepository.save(orderItem);
+            productService.stockChange(orderItemDTO.getQuantity(), orderItemDTO.getProductId());
         }
     }
 

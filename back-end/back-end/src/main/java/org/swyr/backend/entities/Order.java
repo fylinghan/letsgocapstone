@@ -1,6 +1,7 @@
 package org.swyr.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,8 +40,14 @@ public class Order {
     @JoinColumn(name = "useremail")
     private User user;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderedItems;
+
+    @Transient
+    public String getUserEmail() {
+        return user.getEmail();
+    }
 
     public enum status {
         ORDERED,

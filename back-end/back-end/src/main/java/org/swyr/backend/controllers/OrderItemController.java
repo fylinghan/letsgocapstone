@@ -11,7 +11,7 @@ import org.swyr.backend.services.OrderItemService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/items")
+@RequestMapping("/order/items")
 public class OrderItemController {
 
     private final OrderItemService orderItemService;

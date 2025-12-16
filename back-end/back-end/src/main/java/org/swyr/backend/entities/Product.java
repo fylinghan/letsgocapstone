@@ -48,6 +48,11 @@ public class Product {
     @JoinColumn(name = "useremail")
     private User user;
 
+    @Transient
+    public String getUserEmail() {
+        return user.getEmail();
+    }
+
     @JsonIgnore
     @OneToMany(mappedBy = "product")
     private List<OrderItem> orderItem;

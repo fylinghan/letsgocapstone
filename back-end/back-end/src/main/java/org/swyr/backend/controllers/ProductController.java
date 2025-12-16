@@ -88,7 +88,7 @@ public class ProductController {
     }
 
     @PostMapping("/list/card")
-    public ResponseEntity<Product> listCard(@RequestParam ProductDTO productDTO) {
+    public ResponseEntity<Product> listCard(@RequestBody ProductDTO productDTO) {
 
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(productService.listCard(productDTO));

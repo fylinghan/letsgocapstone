@@ -1,5 +1,6 @@
 package org.swyr.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name="orderid", nullable = false, updatable = false)
+    @JsonBackReference
     private Order order;
 
     @ManyToOne

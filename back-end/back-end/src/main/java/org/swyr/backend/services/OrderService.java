@@ -1,5 +1,6 @@
 package org.swyr.backend.services;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.swyr.backend.dtos.OrderDTO;
 import org.swyr.backend.entities.Order;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,13 @@ public class OrderService {
         return orderRepository.findByUser_Email(email);
     }
 
+    @Transactional(rollbackFor = NullPointerException.class)
     public Long generateOrder(OrderDTO orderDTO) {
+
+        if (orderDTO.getOrderedItems()==null || orderDTO.getOrderedItems().isEmpty() || orderDTO.getEmail()==null
+        || orderDTO.getEmail().isEmpty() || orderDTO.getShippingAddress() == null || orderDTO.getShippingAddress().isEmpty()) {
+            throw new IllegalArgumentException("Fields cannot be empty or null");
+        }
         Order order = new Order();
         order.setOrderDate(LocalDate.now());
         order.setUser(userRepository.findById(orderDTO.getEmail()).orElse(null));

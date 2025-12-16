@@ -26,7 +26,11 @@ public class ProductService {
     }
 
     public Optional<Product> getProductById(Long id) {
-        return productRepository.findById(id);
+        Product product = productRepository.findById(id).orElse(null);
+        if (product == null) {
+            throw new IllegalArgumentException("Product does not exist");
+        }
+        return product;
     }
 
     public List<Product> getAllCards() {

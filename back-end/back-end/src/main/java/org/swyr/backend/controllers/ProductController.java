@@ -11,6 +11,7 @@ import org.swyr.backend.services.ProductService;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -84,6 +85,17 @@ public class ProductController {
         }
         catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @GetMapping("/products/{id}")
+    public ResponseEntity <Optional<Product>> getProductById(@PathVariable Long id) {
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(productService.getProductById(id));
+        }
+        catch(IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 

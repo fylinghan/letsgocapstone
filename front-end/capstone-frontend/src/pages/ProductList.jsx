@@ -5,6 +5,10 @@ function ProductList({items, align = "start"}) {
   const justifyClass= 
   align === "center" ? "justify-center" : "justify-start";
 
+  function showListing() {
+
+  }
+
   return (
     <Card className="w-[90%] border-0 shadow-none">
       <ul className={`flex flex-wrap ${justifyClass} gap-4`}>

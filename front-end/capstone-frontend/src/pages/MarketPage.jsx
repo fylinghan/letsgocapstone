@@ -41,7 +41,7 @@ function MarketPage({endpoint, title, banner}) {
         className="w-full h-60 flex items-center bg-cover bg-center"
         style={{ backgroundImage: "url('" + banner + "')" }}
       >
-        <div className="h-full w-full bg-white/20 backdrop-blur flex items-center pl-20">
+        <div className="h-full w-full backdrop-blur bg-white/30 flex items-center pl-20">
           <p className="font-bold text-5xl">{title}</p>
         </div>
       </div>
@@ -88,7 +88,7 @@ function MarketPage({endpoint, title, banner}) {
           </div>
 
           {/* Listings */}
-          <ProductList items={sortedProducts}  align="start"/>
+          <ProductList items={sortedProducts}  align="center"/>
         </div>
       </div>
     </div>

@@ -9,9 +9,9 @@ function Home() {
   const [decks, setDecks] = useState([]);
 
   useEffect(() => {
-  fetch("http://localhost:8080/products/cards").then(r => r.json()).then(setCards);
-  fetch("http://localhost:8080/products/packs").then(r => r.json()).then(setPacks);
-  fetch("http://localhost:8080/products/decks").then(r => r.json()).then(setDecks);
+  fetch("http://localhost:8080/products/homecards").then(r => r.json()).then(setCards);
+  fetch("http://localhost:8080/products/homepacks").then(r => r.json()).then(setPacks);
+  fetch("http://localhost:8080/products/homedecks").then(r => r.json()).then(setDecks);
   }, []);
 
   return (

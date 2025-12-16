@@ -4,8 +4,8 @@ function Decks() {
     return (
         <MarketPage
             title="Battle Decks"
-            endpoint="api/products/decks"
-            banner="/images/deckbanner.jpg"
+            endpoint="http://localhost:8080/products/decks"
+            banner="/images/deckbanner.png"
         />
     );
 

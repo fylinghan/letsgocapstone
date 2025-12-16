@@ -4,8 +4,8 @@ function Packs() {
     return (
         <MarketPage
             title="Booster Packs"
-            endpoint="api/products/packs"
-            banner="/images/cardbanner.png"
+            endpoint="http://localhost:8080/products/packs"
+            banner="/images/packbanner.jpg"
         />
     );
 }

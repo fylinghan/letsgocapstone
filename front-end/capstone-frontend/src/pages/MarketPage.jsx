@@ -5,6 +5,7 @@ function MarketPage({endpoint, title, banner}) {
   const [sortBy, setSortBy] = useState("latest");
   const [filterSet, setFilterSet] = useState("all");
   const [products, setProducts] = useState([]);
+  const [seriesTitles, setSeriesTitles] = useState([]);
 
   useEffect(() => {
   fetch(endpoint)
@@ -20,10 +21,26 @@ function MarketPage({endpoint, title, banner}) {
 }, [endpoint]);
 
 
+  useEffect(() => {
+  fetch("http://localhost:8080/products/series?type=" + title.substring(0,5))
+    .then(res => {
+      console.log("Response status:", res.status);
+      return res.json();
+    })
+    .then(data => {
+      console.log("Fetched titles:", data);
+      setSeriesTitles(data);
+    })
+    .catch(err => console.error("Fetch error:", err));
+}, [endpoint]);
+
+
   const filteredProducts = products.filter((product) => {
     if (filterSet === "all") return true;
     return product.seriesName === filterSet;
   });
+
+
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortBy === "priceLow") return a.price - b.price;
@@ -59,9 +76,11 @@ function MarketPage({endpoint, title, banner}) {
             className="border rounded p-2 w-3/4"
           >
             <option value="all">All Sets</option>
-            <option value="Eevee Grove">Eevee Grove</option>
-            <option value="Surging Sparks">Surging Sparks</option>
-            <option value="Mega Evolution">Mega Evolution</option>
+            {seriesTitles.map((seriesTitle) => (
+      
+              <option value={seriesTitle}>{seriesTitle}</option>
+
+            ))}
           </select>
         </div>
 

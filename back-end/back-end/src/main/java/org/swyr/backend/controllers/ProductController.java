@@ -129,7 +129,6 @@ public class ProductController {
             String uniqueName = UUID.randomUUID() + extension;
             File dest = new File(uploadDir + uniqueName);
             image.transferTo(dest);
-            System.out.println("help la");
             return ResponseEntity.ok("http://localhost:8080/cards/" + uniqueName);
 
         } catch (IOException e) {

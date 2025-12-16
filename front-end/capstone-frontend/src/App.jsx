@@ -8,6 +8,7 @@ import Packs from "./pages/Packs";
 import Decks from "./pages/Decks";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import ListingPage from "./pages/ListingPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -22,6 +23,7 @@ function App() {
         <Route path="/cards" element ={<Cards />} />
         <Route path="/packs" element ={<Packs />} />
         <Route path="/decks" element ={<Decks />} />
+        <Route path="/products/:id" element={<ListingPage />} />
       </Routes>
       
       <Footer/>

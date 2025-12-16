@@ -1,8 +1,10 @@
 import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 function ProductListItem({ product }) {
   const displayName = product.productName;
   const displaySet  = product.seriesName;
+  const navigate = useNavigate();
 
   let borderColor = "";
   switch (product.productType) {
@@ -21,7 +23,7 @@ function ProductListItem({ product }) {
 
   return (
     <li className="w-56">
-      <Card className={`text-center p-4 m-4 items-center border-2 ${borderColor}`}>
+      <Card className={`text-center p-4 m-4 items-center border-2 cursor-pointer ${borderColor}`} onClick={() => navigate(`/products/${product.productID}`)}>
         <img
           className="w-32 h-42 mx-auto mb-4"
           src={"http://localhost:8080" + product.imgPath}

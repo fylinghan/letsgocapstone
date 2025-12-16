@@ -21,7 +21,7 @@ function ProductListItem({ product }) {
 
   return (
     <li className="w-56">
-      <Card className={`h-full text-center p-4 m-4 items-center border-2 ${borderColor}`}>
+      <Card className={`text-center p-4 m-4 items-center border-2 ${borderColor}`}>
         <img
           className="w-32 h-42 mx-auto mb-4"
           src={"http://localhost:8080" + product.imgPath}

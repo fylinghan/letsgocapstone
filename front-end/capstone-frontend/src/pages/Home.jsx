@@ -1,8 +1,18 @@
 import ProductList from "./ProductList";
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-function Home({latestCardList, packsList, deckList}) {
+function Home() {
+  const [cards, setCards] = useState([]);
+  const [packs, setPacks] = useState([]);
+  const [decks, setDecks] = useState([]);
+
+  useEffect(() => {
+  fetch("http://localhost:8080/products/cards").then(r => r.json()).then(setCards);
+  fetch("http://localhost:8080/products/packs").then(r => r.json()).then(setPacks);
+  fetch("http://localhost:8080/products/decks").then(r => r.json()).then(setDecks);
+  }, []);
 
   return (
     <div>
@@ -25,7 +35,7 @@ function Home({latestCardList, packsList, deckList}) {
       <h1 className="m-4 p-2">Latest Card Listings</h1>
       <div className="shadow pb-8">
         <div className="flex justify-center">
-          <ProductList items={latestCardList} />
+          <ProductList items={cards} align="center"/>
         </div>
         <div className="flex justify-center">
             <Link to="/cards">
@@ -39,7 +49,7 @@ function Home({latestCardList, packsList, deckList}) {
       <div className="bg-gray-300 pb-8">
         <h1 className="p-8 text-center">Booster Packs</h1>
         <div className="flex justify-center">
-          <ProductList items={packsList} />
+          <ProductList items={packs} align="center" />
         </div>
         <div className="flex justify-center">
             <Link to="/packs">
@@ -53,7 +63,7 @@ function Home({latestCardList, packsList, deckList}) {
       <div>
         <h1 className="m-4 p-2 pt-4 pb-8">Battle Decks</h1>
         <div className="flex justify-center">
-          <ProductList items={deckList} />
+          <ProductList items={decks} align="center" />
         </div>
         <div className="flex justify-center"><Button className="m-6 w-1/5 bg-black text-white py-2 
         rounded-lg hover:bg-gray-400 hover:text-black">View more decks</Button></div>

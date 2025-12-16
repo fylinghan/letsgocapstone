@@ -138,5 +138,9 @@ public class ProductController {
 
     }
 
+    @GetMapping("/series")
+    public ResponseEntity<List<String>> getSeries(@RequestParam String type) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getSeriesList(type));
+    }
 
 }

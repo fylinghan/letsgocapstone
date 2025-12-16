@@ -81,4 +81,18 @@ public class ProductService {
         return productRepository.findTop3ByProductTypeOrderByDateAddedDesc(Product.ProductType.PACK);
     }
 
+    public List<String> getSeriesList(String type) {
+
+        switch (type.toUpperCase()) {
+            case "DECK":
+                return productRepository.findSeriesNames(Product.ProductType.DECK);
+            case "CARD":
+                return productRepository.findSeriesNames(Product.ProductType.CARD);
+            case "PACK":
+                return productRepository.findSeriesNames(Product.ProductType.PACK);
+
+        }
+        throw new IllegalArgumentException("Invalid type");
+    }
+
 }

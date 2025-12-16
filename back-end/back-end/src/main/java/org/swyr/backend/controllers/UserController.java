@@ -4,8 +4,9 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.swyr.backend.entities.User;
 import org.swyr.backend.services.UserService;
 
 @RestController
@@ -18,9 +19,9 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity login(@RequestBody User user) {
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(userService.checkPassword(username, password));
+            return ResponseEntity.status(HttpStatus.OK).body(userService.checkPassword(user));
         } catch (IllegalArgumentException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (EntityNotFoundException e){
@@ -30,10 +31,10 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity register(@RequestBody User user) {
 
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(userService.registration(username, password));
+            return ResponseEntity.status(HttpStatus.OK).body(userService.registration(user));
         } catch (IllegalArgumentException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (IllegalStateException e){

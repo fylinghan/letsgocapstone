@@ -88,7 +88,7 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity getProductById(@PathVariable Long id) {
 
         try {

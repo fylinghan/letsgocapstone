@@ -16,11 +16,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public String checkPassword(String email, String password) {
-        User user = userRepository.findById(email).orElse(null);
+    public String checkPassword(User userLogin) {
+        User user = userRepository.findById(userLogin.getEmail()).orElse(null);
 
         if (user != null) {
-            if (user.getPassword().equals(password)) {
+            if (user.getPassword().equals(userLogin.getPassword())) {
                 return user.getEmail();
             } else  {
                 throw new IllegalArgumentException("Incorrect password");
@@ -31,24 +31,23 @@ public class UserService {
     }
 
 
-    public String registration(String username, String password) {
-        if(username.trim().isEmpty() || password.trim().isEmpty()) {
+    public String registration(User user) {
+        if(user.getEmail().trim().isEmpty() || user.getPassword().trim().isEmpty()) {
             throw new IllegalArgumentException("Username and/or password cannot be empty");
         }
 
-        if(!checkEmail(username)){
+        if(!checkEmail(user.getEmail())) {
             throw new IllegalArgumentException("Username is not a valid email address");
         }
 
-        if (userRepository.existsById(username)) {
-            throw new IllegalStateException("User already exists with email: " + username);
+        if (userRepository.existsById(user.getEmail())) {
+            throw new IllegalStateException("User already exists with email: " + user.getEmail());
         }
 
-        User user = new User();
-        user.setEmail(username);
-        user.setPassword(password);
+        user.setEmail(user.getEmail());
+        user.setPassword(user.getPassword());
         userRepository.save(user);
-        return username + " is now registered. Please log in.";
+        return user.getEmail() + " is now registered. Please log in.";
     }
 
     /**

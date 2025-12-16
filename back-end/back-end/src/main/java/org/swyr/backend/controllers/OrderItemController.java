@@ -1,5 +1,6 @@
 package org.swyr.backend.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.swyr.backend.entities.OrderItem;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/order/items")
+@CrossOrigin(origins = "http://localhost:5173")
 public class OrderItemController {
 
     private final OrderItemService orderItemService;

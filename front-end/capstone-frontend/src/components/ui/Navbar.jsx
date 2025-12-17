@@ -7,6 +7,7 @@ function Navbar({user, setUser}) {
 
   function handleLogout() {
     setUser(null);
+    document.cookie = `user=; max-age=0; path=/`;
     navigate("/");
   }
 
@@ -21,6 +22,7 @@ function Navbar({user, setUser}) {
           </div>
           <div className="flex items-center">
             <input type="text" placeholder="Search..." className="w-80 m-4 pl-4 border border-gray-300 rounded"/>
+            <Link to="/cart"><img src="public\images\shopping-twotone.svg"  alt="cart icon"/></Link>
             {!user ? (
               <div>
                 <Link to="/register" className="w-1/5 m-2 hover:bg-gray-300 p-4 rounded">Register</Link>
@@ -28,7 +30,7 @@ function Navbar({user, setUser}) {
             </div>)
             : (
               <span className="text-gray-700 flex items-center">
-                Hello, {user.username}
+                Hello, {user}
                 <Button onClick={handleLogout} className="m-2 hover:bg-gray-400 hover:text-white">Log out</Button>
               </span>
             )

@@ -42,9 +42,7 @@ function Register({setUser}) {
       }
     ).then(data =>{
       alert(`Account created: ${email}`);
-      // const username = email.split("@")[0];
       document.cookie = `user=${email}; max-age=3600; path=/`;
-      setUser(getCookie("user").split("@")[0]);
       navigate(history.back());
     }).catch(err => {
       console.error("Registration error:", err.message);

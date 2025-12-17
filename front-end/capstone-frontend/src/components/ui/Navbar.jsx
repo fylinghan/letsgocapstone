@@ -1,6 +1,8 @@
 import Martlogo from "/images/sgcardmart.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./button";
+import React, { useEffect } from "react";
+import { getCookie } from "../../lib/cookies";
 
 function Navbar({user, setUser}) {
   const navigate = useNavigate();
@@ -10,6 +12,10 @@ function Navbar({user, setUser}) {
     document.cookie = `user=; max-age=0; path=/`;
     navigate("/");
   }
+
+  useEffect(() =>{
+      setUser(getCookie("user").split("@")[0]);
+    },[])
 
   return (
     <>
@@ -21,7 +27,7 @@ function Navbar({user, setUser}) {
             <Link to="/decks" className="hover:bg-gray-300 p-4 rounded">Battle Decks</Link>
           </div>
           <div className="flex items-center">
-            <input type="text" placeholder="Search..." className="w-80 m-4 pl-4 border border-gray-300 rounded"/>
+            {/* <input type="text" placeholder="Search..." className="w-80 m-4 pl-4 border border-gray-300 rounded"/> */}
             <Link to="/cart"><img src="/images/shopping-twotone.svg"  alt="cart icon"/></Link>
             {!user ? (
               <div>

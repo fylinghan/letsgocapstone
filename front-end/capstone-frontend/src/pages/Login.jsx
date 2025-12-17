@@ -3,12 +3,19 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { getCookie } from "../lib/cookies";
+import React, { useEffect } from "react";
+
 
 
 function Login({setUser}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() =>{
+    if(getCookie("user")!==null)
+      navigate(history.back())
+  },[])
 
   function handleSubmit(event) {
     event.preventDefault();   // Prevent page reload on submit
@@ -38,9 +45,7 @@ function Login({setUser}) {
       }
     ).then(data =>{
       alert(`Logged in with email: ${email}`);
-      const username = email.split("@")[0];
       document.cookie = `user=${email}; max-age=3600; path=/`;
-      setUser(getCookie("user").split("@")[0]);
       navigate(history.back());
     }).catch(err => {
       console.error("Login error:", err.message);

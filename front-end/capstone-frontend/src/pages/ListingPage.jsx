@@ -103,7 +103,7 @@ function ListingPage() {
             </div>
           )}
         {
-            quantity !== 0 &&
+            product.stock - inCart !== 0 &&
           <button
             onClick={addToCart}
             className="my-2 w-24 bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white"
@@ -113,7 +113,7 @@ function ListingPage() {
         }
 
         {
-            quantity ===0 &&
+            product.stock - inCart === 0 &&
 
             <button disabled
             className="my-2 w-24 bg-gray-200 text-black py-2 rounded-lg "

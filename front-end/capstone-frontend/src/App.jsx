@@ -10,6 +10,7 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 // import Cart from "./pages/Cart"
 import ListingPage from "./pages/ListingPage";
+import UserPage from "./pages/UserPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -26,6 +27,7 @@ function App() {
         <Route path="/decks" element ={<Decks />} />
         {/* <Route path="/cart" element ={<Cart />} /> */}
         <Route path="/products/:id" element={<ListingPage />} />
+        <Route path="/user/:user" element={<UserPage />} />
       </Routes>
       <Footer/>
     </div>

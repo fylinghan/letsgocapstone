@@ -22,7 +22,7 @@ function Register({setUser}) {
         return;
     }
 
-    fetch("http://localhost:8080/register",{
+    fetch("http://localhost:8080/user/register",{
       method:"POST",
       headers:{ 
         "Content-Type": "application/json"

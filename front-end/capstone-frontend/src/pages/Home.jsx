@@ -65,8 +65,13 @@ function Home() {
         <div className="flex justify-center">
           <ProductList items={decks} align="center" />
         </div>
-        <div className="flex justify-center"><Button className="m-6 w-1/5 bg-black text-white py-2 
-        rounded-lg hover:bg-gray-400 hover:text-black">View more decks</Button></div>
+        <div className="flex justify-center">
+          <Link to="/decks">
+            <Button className="m-6 w-80 bg-black text-white py-2 rounded-lg hover:bg-gray-400 hover:text-black">
+            View more decks
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {/* {Sell cards} */}

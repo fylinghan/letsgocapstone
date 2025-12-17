@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "@/components/ui/card"
 import { getCookie } from "@/lib/cookies";
+import ProductList from "./ProductList";
 
 function UserPage() {
     const { user } = useParams();
@@ -24,24 +25,25 @@ function UserPage() {
         return <div className="text-center mt-10">Loading...</div>;
     }
 
-    const loggedInEmail = getCookie("userEmail");
+    const loggedInEmail = getCookie("user");
     const isSameUser = loggedInEmail === userInfo.email;
 
     return (
         <div className="flex justify-center">
-            <Card className="w-[80%] h-96 flex flex-col gap-4 items-center p-6 m-8 border-2">
-                <div>
-                    <div>
+            <Card className="w-[80%] flex flex-col items-center p-4 m-8 border-2">
+                <div className="flex flex-col w-full items-center">
+                    <div className="flex flex-col justify-around items-center m-8">
                         <img className="h-32 mx-auto"
                             src="/images/usericon.png"
                             alt={userInfo.email.split("@")[0]}
                             />
                         
                         <p>{userInfo.email}</p>
+                        {isSameUser && <p className="mt-10 font-bold text-3xl text-blue-400">Orders</p>}
                     </div>
-                    <div>
-                        <p>Listings</p>
-                        {isSameUser && <p>Orders</p>}
+                    <div className="flex flex-col text-center">
+                        <p className="text-3xl font-bold m-4">User Listings</p>
+                        <ProductList items={userInfo.cards} showBuyButton={false}></ProductList>
                     </div>
                 </div>
             </Card>

@@ -107,7 +107,7 @@ function MarketPage({endpoint, title, banner}) {
           </div>
 
           {/* Listings */}
-          <ProductList items={sortedProducts}  align="center"/>
+          <ProductList items={sortedProducts} showBuyButton={true}  align="start"/>
         </div>
       </div>
     </div>

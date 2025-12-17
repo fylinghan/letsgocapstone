@@ -8,6 +8,7 @@ import Packs from "./pages/Packs";
 import Decks from "./pages/Decks";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+// import Cart from "./pages/Cart"
 import ListingPage from "./pages/ListingPage";
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
   
   return (
     <div>
-      <Navbar user={user} setUser={setUser}/>
+      <Navbar user={user} setUser={setUser} className="flex-start"/>
       <Routes>
         <Route path="/" element ={<Home />} />
         <Route path="/login" element ={<Login setUser={setUser} />} />
@@ -23,9 +24,9 @@ function App() {
         <Route path="/cards" element ={<Cards />} />
         <Route path="/packs" element ={<Packs />} />
         <Route path="/decks" element ={<Decks />} />
+        {/* <Route path="/cart" element ={<Cart />} /> */}
         <Route path="/products/:id" element={<ListingPage />} />
       </Routes>
-      
       <Footer/>
     </div>
     

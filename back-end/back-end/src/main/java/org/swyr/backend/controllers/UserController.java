@@ -3,14 +3,12 @@ package org.swyr.backend.controllers;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.swyr.backend.entities.User;
 import org.swyr.backend.services.UserService;
 
 @RestController
+@RequestMapping("/user")
 @CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
 
@@ -18,6 +16,17 @@ public class UserController {
 
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity getUserById(@PathVariable String id) {
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(id));
+        }
+        catch(IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     @PostMapping("/login")

@@ -1,9 +1,9 @@
 import { useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card } from "@/components/ui/card"
 
 function ListingPage() {
-    const [product, setProducts] = useState([]);
+    const [product, setProduct] = useState(null);
     const { id } = useParams();
 
     useEffect(() => {
@@ -14,10 +14,15 @@ function ListingPage() {
             })
             .then(data => {
             console.log("Fetched products:", data);
-            setProducts(data);
+            setProduct(data);
             })
             .catch(err => console.error("Fetch error:", err));
         }, [id]);
+
+        if (!product) {
+            return <div className="text-center mt-10">Loading...</div>;
+        }
+
     return (
         <div className="flex justify-center">
             <Card className="w-[80%] h-96 flex gap-4 items-center p-6 m-8 border-2">
@@ -27,7 +32,12 @@ function ListingPage() {
             alt={product.productName}
             />
             <div className="w-1/2 ml-0 pr-8 flex flex-col justify-left">
-                <div className="font-semibold text-5xl mt-4">{product.productName}</div>
+                <div>
+                    <div className="font-semibold text-5xl mt-4">{product.productName}</div>
+                    <Link to={`/user/${product.userEmail}`}>
+                        <p>by {product.userEmail.split("@")[0]}</p>
+                    </Link>
+                </div>
 
                 <div className="text-sm text-gray-500 my-2">{product.seriesName}</div>
 

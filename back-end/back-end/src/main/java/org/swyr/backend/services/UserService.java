@@ -30,6 +30,14 @@ public class UserService {
         }
     }
 
+    public User getUserById(String id) {
+        User user = userRepository.findById(id).orElse(null);
+        if (user == null) {
+            throw new IllegalArgumentException("User does not exist");
+        }
+        return user;
+    }
+
 
     public String registration(User user) {
         if(user.getEmail().trim().isEmpty() || user.getPassword().trim().isEmpty()) {

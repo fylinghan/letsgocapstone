@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 
-function ProductListItem({ product }) {
+function ProductListItem({ product, showBuyButton = true }) {
   const displayName = product.productName;
   const displaySet  = product.seriesName;
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ function ProductListItem({ product }) {
           ${Number(product.price).toFixed(2)}
         </div>
 
-        {product.productType === "PACK" && (
+        {product.productType === "PACK" && showBuyButton && (
           <button
             className="mt-4 w-full bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white"
           >

@@ -1,7 +1,7 @@
 import ProductListItem from './ProductListItem.jsx';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
-function ProductList({items, align = "start"}) {
+function ProductList({items, align = "start", showBuyButton}) {
   const justifyClass= 
   align === "center" ? "justify-center" : "justify-start";
 
@@ -9,7 +9,10 @@ function ProductList({items, align = "start"}) {
     <Card className="w-[90%] border-0 shadow-none">
       <ul className={`flex flex-wrap ${justifyClass} gap-4`}>
         {items.map((p) => (
-          <ProductListItem key={p.productID} product={p} />
+          <ProductListItem 
+          key={p.productID} 
+          product={p} 
+          showBuyButton={showBuyButton} />
         ))}
       </ul>
     </Card>

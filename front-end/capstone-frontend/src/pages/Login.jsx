@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
+import { getCookie } from "../lib/cookies";
+
 
 function Login({setUser}) {
   const [email, setEmail] = useState("");
@@ -16,11 +18,33 @@ function Login({setUser}) {
       return;
     }
 
-    alert(`Logged in with email: ${email}`);
-    const username = email.split("@")[0];
-    setUser({ username });
-
-    navigate("/");
+    fetch("http://localhost:8080/login",{
+      method:"POST",
+      headers:{ 
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(
+        {
+          email:email,
+          password:password
+        })
+    }).then(
+      async response => {
+        if(!response.ok){
+          const errorMessage = await response.text();
+          alert(errorMessage);
+          throw new Error(errorMessage);
+        }
+      }
+    ).then(data =>{
+      alert(`Logged in with email: ${email}`);
+      const username = email.split("@")[0];
+      document.cookie = `user=${email}; max-age=3600; path=/`;
+      setUser(getCookie("user").split("@")[0]);
+      navigate(history.back());
+    }).catch(err => {
+      console.error("Login error:", err.message);
+    });
   }
 
   return (

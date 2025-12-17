@@ -7,6 +7,7 @@ function Navbar({user, setUser}) {
 
   function handleLogout() {
     setUser(null);
+    document.cookie = `user=; max-age=0; path=/`;
     navigate("/");
   }
 
@@ -28,7 +29,7 @@ function Navbar({user, setUser}) {
             </div>)
             : (
               <span className="text-gray-700 flex items-center">
-                Hello, {user.username}
+                Hello, {user}
                 <Button onClick={handleLogout} className="m-2 hover:bg-gray-400 hover:text-white">Log out</Button>
               </span>
             )

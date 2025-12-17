@@ -34,14 +34,14 @@ function ListingPage() {
             <div className="w-1/2 ml-0 pr-8 flex flex-col justify-left">
                 <div>
                     <div className="font-semibold text-5xl mt-4">{product.productName}</div>
-                    <Link to={`/user/${product.userEmail}`}>
-                        <p>by {product.userEmail.split("@")[0]}</p>
-                    </Link>
                 </div>
 
                 <div className="text-sm text-gray-500 my-2">{product.seriesName}</div>
+                    <Link to={`/user/${product.userEmail}`}>
+                        <p>Listed by: {product.userEmail.split("@")[0]}</p>
+                    </Link>
 
-                <p className="text-blue-600 font-bold text-3xl">${Number(product.price).toFixed(2)}</p>
+                <p className="text-blue-600 font-bold text-3xl mt-4">${Number(product.price).toFixed(2)}</p>
 
                 <p className="mt-4 mb-2"> Umbreon EX from Eevee Grove set, near mint with no observable damage. Great for binder collections!</p>
 

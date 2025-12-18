@@ -46,12 +46,12 @@ function ThankYou() {
 
         <div>
         {order.orderedItems?.map((item) => (
-          <div className="flex justify-around item-center border rounded mb-4 p-2 pr-8">
-            <img src={`http://localhost:8080${item.product.imgPath}`} alt="item image" className="w-48 h-48" />
+          <div className="flex gap-8 items-center border rounded mb-4 p-8">
+            <img src={`http://localhost:8080${item.product.imgPath}`} alt="item image" className="w-42 h-56" />
             <div className="flex flex-col justify-between">
-            <p className="font-bold">{item.product.productName}</p>
-            <p>Quantity: {item.quantity}</p>
-            <p>Price: ${item.product.price}</p>
+              <p className="font-bold">{item.product.productName}</p>
+              <p>Quantity: {item.quantity}</p>
+              <p>Price: ${item.product.price}</p>
             </div>
 
           </div>

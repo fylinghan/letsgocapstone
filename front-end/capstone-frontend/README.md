@@ -1,16 +1,38 @@
-# React + Vite
+# Sgcardmart
+ 
+A simple backend service for user authentication and registration, order creation and card listing
+ 
+## Usage
+ 
+Please copy the uploads folder along with the src and pom.xml as the uploads is required for user to upload their card images.
+DDL and DML are present in the resources folder directly. Application properties was instructed to use the uploads folder as well.
+ 
+## Features
+ 
+- **User Management**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  - User registration with email validation
 
-Currently, two official plugins are available:
+  - Password matching
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - Retrieval of user details by email (ID)
+ 
+- **Validation Utilities**
 
-## React Compiler
+  - Regex‑based email format checker
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  - Input validation for empty fields
+ 
+- **Repositories**
 
-## Expanding the ESLint configuration
+  - All repositories extending`JpaRepositor` for CRUD operations
+ 
+- **Services**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  - `UserService` encapsulating business logic for registration, login, and retrieval
+
+  - `OrderService` encapsulating business logic for order creation and retrieval
+  - `ProductService` encapsulating business logic for product retrieval and card listing
+  - `OrderItemService` for OrderItem creation to hold product in the respective orders and its quantities.
+
+ 

@@ -113,33 +113,33 @@ const handleSubmit = async (e) => {
         <div className="p-10">
           <h1>Items Overview</h1>
           <div className="p-10">
-            {products.map((product) => (
-                (localStorage.getItem(product.productID)>0) && 
-                    <div
-                      key={product.productID}
-                      className="flex items-center gap-5 py-3 border-b"
-                    >
-                      <div className="flex items-center flex-start">
-                        <div>
-                          <img
-                            src={"http://localhost:8080" + product.imgPath}
-                            alt="cart item picture"
-                            className="max-h-40 mx-auto"
-                          />
-                        </div>
-                        <p>{product.productName}</p>
-                      </div>
-                      <div className="flex gap-10">
-                        {
-                          <div className="flex gap-4">
-                            <p>Quantity: </p>
-                            <p>{localStorage.getItem(product.productID)}</p>
-                          </div>
-                        }
-                        <p>{product.price}</p>
-                      </div>
+            {products.map(
+              (product) =>
+                localStorage.getItem(product.productID) > 0 && (
+                  <div
+                    key={product.productID}
+                    className="flex items-center justify-between gap-6 py-4 border-b border-gray-300"
+                  >
+                    <div className="flex items-center gap-6 min-w-0">
+                      <img
+                        src={"http://localhost:8080" + product.imgPath}
+                        alt={product.productName}
+                        className="w-24 h-24 object-contain flex-shrink-0 rounded"
+                      />
+                      <p className="font-medium truncate min-w-0">{product.productName}</p>
                     </div>
-            ))}
+
+                    <div className="flex items-center gap-10 min-w-[200px] justify-end">
+                      <div className="flex items-center gap-2 whitespace-nowrap">
+                        <span className="font-semibold">Quantity:</span>
+                        <span>{localStorage.getItem(product.productID)}</span>
+                      </div>
+                      <p className="font-semibold">${product.price.toFixed(2)}</p>
+                    </div>
+                  </div>
+                )
+              )}
+
             <div className="flex justify-end mt-6">
               <p className="text-xl font-bold">Total: ${total.toFixed(2)}</p>
             </div>

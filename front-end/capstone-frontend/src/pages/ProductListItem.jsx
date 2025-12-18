@@ -23,12 +23,17 @@ function ProductListItem({ product, showBuyButton = true }) {
 
   return (
     <li className="w-56">
-      <Card className={`h-80 text-center p-4 m-4 items-center border-2 cursor-pointer ${borderColor}`} onClick={() => navigate(`/products/${product.productID}`)}>
-        <img
-          className="w-32 h-42 mx-auto mb-4"
-          src={"http://localhost:8080" + product.imgPath}
-          alt={displayName}
-        />
+      <Card
+        className={`h-80 text-center p-4 m-4 border-2 cursor-pointer box-border flex flex-col`}
+        onClick={() => navigate(`/products/${product.productID}`)}
+      >
+        <div className="h-[60%] m-4">
+          <img
+            className="w-32 h-full mx-auto mb-4"
+            src={"http://localhost:8080" + product.imgPath}
+            alt={displayName}
+          />
+        </div>
 
         <div className="font-semibold text-lg">{displayName}</div>
 
@@ -42,13 +47,18 @@ function ProductListItem({ product, showBuyButton = true }) {
 
         {product.productType === "PACK" && showBuyButton && (
           <button
-            className="mt-4 w-full bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white"
+            className="mt-auto w-full bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white"
+            onClick={(e) => {
+              e.stopPropagation(); // prevent card's onClick when clicking buy
+              // your buy logic here
+            }}
           >
             Buy Pack
           </button>
         )}
       </Card>
     </li>
+
   );
 }
 

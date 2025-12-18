@@ -1,5 +1,5 @@
-import { useState, useEffect, Link } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import { Card } from "@/components/ui/card"
 import { getCookie } from "@/lib/cookies";
 import ProductList from "./ProductList";
@@ -39,7 +39,11 @@ function UserPage() {
                             />
                         
                         <p>{userInfo.email}</p>
-                        {isSameUser && <p className="mt-10 font-bold text-3xl text-blue-400">Orders</p>}
+                        {isSameUser && 
+                            <Link to="/orders">
+                                <p className="mt-10 font-bold text-3xl text-blue-400">Orders</p>
+                            </Link>
+                        }
                     </div>
                     <div className="w-full flex flex-col text-center p-8">
                         <p className="text-3xl font-bold m-4">User Listings</p>

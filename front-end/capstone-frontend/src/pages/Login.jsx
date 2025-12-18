@@ -12,11 +12,6 @@ function Login({setUser}) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() =>{
-    if(getCookie("user")!==null)
-      navigate(history.back())
-  },[])
-
   function handleSubmit(event) {
     event.preventDefault();   // Prevent page reload on submit
 
@@ -46,6 +41,7 @@ function Login({setUser}) {
     ).then(data =>{
       alert(`Logged in with email: ${email}`);
       document.cookie = `user=${email}; max-age=3600; path=/`;
+      setUser(getCookie("user"));
       navigate(history.back());
     }).catch(err => {
       console.error("Login error:", err.message);

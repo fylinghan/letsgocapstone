@@ -47,6 +47,7 @@ const handleSubmit = async (e) => {
 
     const data = await response.json();
     console.log("Order submitted successfully:", data);
+    localStorage.clear();
     navigate("/thankyou", {state: {orderId: data}});
   } catch (error) {
     alert("Error submitting order, please check cart:", error);

@@ -82,8 +82,11 @@ function Home() {
             marketplace! We're secure, transparent, and built for collectors — list 
             your cards in minutes, reach thousands of buyers, and get paid fast. Sell smarter, earn more.</p>
         </div>
-        <div className="w-1/2 flex justify-center items-center"><Button className="m-6 w-60 bg-black
-         text-white rounded-lg hover:bg-gray-400 hover:text-black">Submit your listing now!</Button></div>
+        <div className="w-1/2 flex justify-center items-center">
+        <Link to="/listitem" className="hover:bg-gray-300 p-4">
+          <Button className="m-6 w-60 bg-black
+          text-white rounded-lg hover:bg-gray-400 hover:text-black">Submit your listing now!</Button>
+         </Link></div>
       </div>
     </div>
     

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 
 function ListingPage() {
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
@@ -73,15 +73,12 @@ function ListingPage() {
           </div>
 
           <div className="text-sm text-gray-500 my-2">{product.seriesName}</div>
+          <Link to={`/user/${product.userEmail}`}>
+            <p>Listed by: {product.userEmail?.split("@")[0]}</p>
+          </Link>
 
           <p className="text-blue-600 font-bold text-3xl">
             ${Number(product.price).toFixed(2)}
-          </p>
-
-          <p className="mt-4 mb-2">
-            {" "}
-            Umbreon EX from Eevee Grove set, near mint with no observable
-            damage. Great for binder collections!
           </p>
 
           {product.productType !== "CARD" && (

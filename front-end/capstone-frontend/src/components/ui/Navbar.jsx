@@ -14,6 +14,7 @@ function Navbar({user, setUser}) {
   }
 
   useEffect(() =>{
+    if (getCookie("user")!==null)
       setUser(getCookie("user").split("@")[0]);
     },[])
 
@@ -32,7 +33,7 @@ function Navbar({user, setUser}) {
             {!user ? (
               <div>
                 <Link to="/register" className="w-1/5 m-2 hover:bg-gray-300 p-4 rounded">Register</Link>
-                <Link to="/login" className="w-1/5 hover:bg-gray-300 p-4 rounded">Login</Link>
+                <Link to="/login" state={{ from: location.pathname }} className="w-1/5 hover:bg-gray-300 p-4 rounded">Login</Link>
             </div>)
             : (
               <span className="text-gray-700 flex items-center">

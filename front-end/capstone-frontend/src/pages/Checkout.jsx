@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getCookie } from "../lib/cookies";
 
 function Checkout() {
   const [products, setProducts] = useState([]);
   const [quantities, setQuantities] = useState({});
   const [total, setTotal] = useState(0);
+  const navigate = useNavigate();
   const orderedItems = Object.entries(localStorage)
     .filter(([key, value]) => Number(value) > 0)
     .map(([key, value]) => ({
@@ -46,10 +47,10 @@ const handleSubmit = async (e) => {
 
     const data = await response.json();
     console.log("Order submitted successfully:", data);
-    navigate
+    navigate("/thankyou", {state: {orderId: data}});
   } catch (error) {
     alert("Error submitting order, please check cart:", error);
-    naviga
+    navigate("/cart");
   }
 };
 
@@ -140,9 +141,6 @@ const handleSubmit = async (e) => {
             ))}
             <div className="flex justify-end mt-6">
               <p className="text-xl font-bold">Total: ${total.toFixed(2)}</p>
-              {/* <Link to="/checkout">
-                    <button>Checkout</button>
-                </Link> */}
             </div>
           </div>
         </div>

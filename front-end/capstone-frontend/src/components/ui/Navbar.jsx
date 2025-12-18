@@ -20,7 +20,7 @@ function Navbar({user, setUser}) {
 
   return (
     <>
-      <nav className="sticky z-50 top-0 left-0 right-0 flex flex-wrap justify-between px-4 items-center bg-white text-black text-xl font-poppins shadow-lg">
+      <nav className="sticky z-50 top-0 left-0 right-0 flex flex-wrap justify-between px-4 pb-2 items-center bg-white text-black text-xl font-poppins shadow-lg">
           <div className="flex items-center text-center">
             <Link to="/"><img className="w-40 p-2 mr-8" src={Martlogo} alt="website logo" /></Link>
             <Link to="/cards" className="hover:bg-gray-300 p-4 rounded">Cards</Link>

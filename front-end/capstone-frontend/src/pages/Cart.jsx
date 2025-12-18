@@ -80,13 +80,13 @@ function Cart() {
             key={product.productID}
             className="flex items-center justify-between py-6 border-b-2"
           >
-            <div className="flex items-center">
+            <div className="flex items-center gap-6">
               <img
                 src={"http://localhost:8080" + product.imgPath}
                 alt="cart item picture"
-                className="max-h-40 mx-auto"
+                className="max-h-40 max-w-20"
               />
-              <p className="font-bold">{product.productName}</p>
+              <p className="font-bold max-w-40">{product.productName}</p>
             </div>
             <div className="flex gap-10 pr-4">
               <div className="flex gap-2">
@@ -97,7 +97,7 @@ function Cart() {
                 >
                   -
                 </button>
-                <p>{localStorage.getItem(product.productID)}</p>
+                <p className="w-5 text-center">{localStorage.getItem(product.productID)}</p>
                 <button
                   onClick={() => addQty(product.stock, product.productID)}
                   className="border border-gray-300 rounded px-1"
@@ -105,7 +105,7 @@ function Cart() {
                   +
                 </button>
               </div>
-              <p>${product.price}</p>
+              <p className="text-center w-10">${product.price}</p>
             </div>
             {/* <li key={product.id}>{product.name}</li> */}
           </div>

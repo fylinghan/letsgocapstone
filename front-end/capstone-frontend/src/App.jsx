@@ -13,6 +13,7 @@ import Checkout from "./pages/Checkout";
 import ThankYou from "./pages/ThankYou";
 import ListingPage from "./pages/ListingPage";
 import UserPage from "./pages/UserPage";
+import UserListing from "./pages/UserListing";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,6 +33,7 @@ function App() {
         <Route path="/thankyou" element ={<ThankYou />} />
         <Route path="/products/:id" element={<ListingPage />} />
         <Route path="/user/:user" element={<UserPage />} />
+        <Route path="/listitem" element={<UserListing />} />
       </Routes>
       <Footer/>
     </div>

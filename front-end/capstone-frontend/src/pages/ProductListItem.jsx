@@ -23,7 +23,7 @@ function ProductListItem({ product, showBuyButton = true }) {
 
   return (
     <li className="w-56">
-      <Card className={`text-center p-4 m-4 items-center border-2 cursor-pointer ${borderColor}`} onClick={() => navigate(`/products/${product.productID}`)}>
+      <Card className={`h-80 text-center p-4 m-4 items-center border-2 cursor-pointer ${borderColor}`} onClick={() => navigate(`/products/${product.productID}`)}>
         <img
           className="w-32 h-42 mx-auto mb-4"
           src={"http://localhost:8080" + product.imgPath}

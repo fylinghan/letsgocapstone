@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Card } from "@/components/ui/card";
+
 
 function Cart() {
   const [products, setProducts] = useState([]);
@@ -72,42 +74,38 @@ function Cart() {
   return (
     <div className="p-20">
       <h1>Your Cart</h1>
-      <div className="p-20">
+      <Card className="p-6 border-2">
         {products.map((product) => (
           <div
             key={product.productID}
-            className="flex items-center gap-5 py-3 border-b"
+            className="flex items-center justify-between py-6 border-b-2"
           >
-            <div className="flex items-center flex-start">
-              <div>
-                <img
-                  src={"http://localhost:8080" + product.imgPath}
-                  alt="cart item picture"
-                  className="max-h-40 mx-auto"
-                />
-              </div>
-              <p>{product.productName}</p>
+            <div className="flex items-center">
+              <img
+                src={"http://localhost:8080" + product.imgPath}
+                alt="cart item picture"
+                className="max-h-40 mx-auto"
+              />
+              <p className="font-bold">{product.productName}</p>
             </div>
-            <div className="flex gap-10">
-              {
-                <div className="flex gap-4">
-                  <p>Quantity: </p>
-                  <button
-                    onClick={() => minusQty(product.productID)}
-                    className="border border-gray-300 rounded px-1"
-                  >
-                    -
-                  </button>
-                  <p>{localStorage.getItem(product.productID)}</p>
-                  <button
-                    onClick={() => addQty(product.stock, product.productID)}
-                    className="border border-gray-300 rounded px-1"
-                  >
-                    +
-                  </button>
-                </div>
-              }
-              <p>{product.price}</p>
+            <div className="flex gap-10 pr-4">
+              <div className="flex gap-2">
+                <p>Qty: </p>
+                <button
+                  onClick={() => minusQty(product.productID)}
+                  className="border border-gray-300 rounded px-1"
+                >
+                  -
+                </button>
+                <p>{localStorage.getItem(product.productID)}</p>
+                <button
+                  onClick={() => addQty(product.stock, product.productID)}
+                  className="border border-gray-300 rounded px-1"
+                >
+                  +
+                </button>
+              </div>
+              <p>${product.price}</p>
             </div>
             {/* <li key={product.id}>{product.name}</li> */}
           </div>
@@ -124,7 +122,7 @@ function Cart() {
             </Link>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

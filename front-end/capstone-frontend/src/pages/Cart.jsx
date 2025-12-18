@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const [products, setProducts] = useState([]);
   const [quantities, setQuantities] = useState({});
   const [total, setTotal] = useState(0);
 
-const calculateTotal = () => {
-  const sum = products.reduce((acc, product) => {
-    const qty = quantities[product.productID] || 0;
-    return acc + product.price * qty;
-  }, 0);
-  setTotal(sum);
-};
-
+  const calculateTotal = () => {
+    const sum = products.reduce((acc, product) => {
+      const qty = quantities[product.productID] || 0;
+      return acc + product.price * qty;
+    }, 0);
+    setTotal(sum);
+  };
 
   const addQty = (maxStock, productID) => {
     if (parseInt(localStorage.getItem(productID)) < maxStock) {
@@ -32,8 +31,8 @@ const calculateTotal = () => {
   };
 
   useEffect(() => {
-  calculateTotal();
-}, [products, quantities]);
+    calculateTotal();
+  }, [products, quantities]);
 
   useEffect(() => {
     const allItems = {};
@@ -90,7 +89,7 @@ const calculateTotal = () => {
               <p>{product.productName}</p>
             </div>
             <div className="flex gap-10">
-              {(
+              {
                 <div className="flex gap-4">
                   <p>Quantity: </p>
                   <button
@@ -107,17 +106,23 @@ const calculateTotal = () => {
                     +
                   </button>
                 </div>
-              )}
+              }
               <p>{product.price}</p>
             </div>
             {/* <li key={product.id}>{product.name}</li> */}
           </div>
         ))}
-        <div className="flex justify-end mt-6">
+        <div className="flex flex-col items-end mt-6">
+          <div>
             <p className="text-xl font-bold">Total: ${total.toFixed(2)}</p>
-            {/* <Link to="/checkout">
-                <button>Checkout</button>
-            </Link> */}
+          </div>
+          <div className="p-2">
+            <Link to="/checkout">
+              <button className="bg-gray-300 border rounded font-bold text-xl p-3 hover:bg-orange-500 hover:text-white">
+                Checkout
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ import Cart from "./pages/Cart"
 import Checkout from "./pages/Checkout"
 import ListingPage from "./pages/ListingPage";
 import UserPage from "./pages/UserPage";
+import UserListing from "./pages/UserListing";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,6 +31,7 @@ function App() {
         <Route path="/checkout" element ={<Checkout />} />
         <Route path="/products/:id" element={<ListingPage />} />
         <Route path="/user/:user" element={<UserPage />} />
+        <Route path="/listitem" element={<UserListing />} />
       </Routes>
       <Footer/>
     </div>

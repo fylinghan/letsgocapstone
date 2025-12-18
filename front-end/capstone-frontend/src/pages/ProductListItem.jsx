@@ -47,14 +47,11 @@ function ProductListItem({ product, showBuyButton = true }) {
 
         {product.productType === "PACK" && showBuyButton && (
           <button
-            className="mt-auto w-full bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white"
-            onClick={(e) => {
-              e.stopPropagation(); // prevent card's onClick when clicking buy
-              // your buy logic here
-            }}
+            className="w-full bg-gray-200 text-black py-2 rounded-lg hover:bg-black hover:text-white"
           >
-            Buy Pack
-          </button>
+  Buy Pack
+</button>
+
         )}
       </Card>
     </li>

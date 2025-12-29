@@ -44,11 +44,13 @@ function ThankYou() {
 
         <h2 className="pt-10">Item Overview</h2>
 
-        <div>
+        <div className="w-[60%]">
         {order.orderedItems?.map((item) => (
-          <div className="flex gap-8 items-center border rounded mb-4 p-8">
-            <img src={`http://localhost:8080${item.product.imgPath}`} alt="item image" className="w-42 h-56" />
-            <div className="flex flex-col justify-between">
+          <div className="flex items-center border rounded mb-4 p-8 w-full">
+            <div className="w-60 flex justify-center items-center">
+              <img src={`http://localhost:8080${item.product.imgPath}`} alt="item image" className="w-42 h-56 object-contain" />
+            </div>
+            <div className="flex flex-col justify-between items-center w-1/2">
               <p className="font-bold">{item.product.productName}</p>
               <p>Quantity: {item.quantity}</p>
               <p>Price: ${item.product.price}</p>

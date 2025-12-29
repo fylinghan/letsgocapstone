@@ -43,7 +43,8 @@ function Register({setUser}) {
     ).then(data =>{
       alert(`Account created: ${email}`);
       document.cookie = `user=${email}; max-age=3600; path=/`;
-      navigate(history.back());
+      setUser(email);
+      navigate(-1);
     }).catch(err => {
       console.error("Registration error:", err.message);
     });

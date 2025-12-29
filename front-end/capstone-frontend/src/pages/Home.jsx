@@ -25,7 +25,7 @@ function Home() {
         />
         <div className="bg-gray-300 w-1/4 h-full flex flex-col justify-center items-center text-center">
           <p className="text-xl font-semibold">Eevee Grove Now Available!</p>
-            <Link to="/cards">
+            <Link to="/packs">
                 <Button className="w-40 mt-4 bg-white hover:bg-black text-black hover:text-white">Shop now</Button>
             </Link>
         </div>

@@ -69,7 +69,7 @@ public class ProductService {
      * @return a list of {@link Product} entities of type CARD
      */
     public List<Product> getAllCards() {
-        return productRepository.findByProductType(Product.ProductType.CARD);
+        return productRepository.findByProductTypeAndStockGreaterThanOrderByDateAddedDesc(Product.ProductType.CARD, 0);
     }
 
     /**
@@ -137,7 +137,7 @@ public class ProductService {
      * @return a list of the latest eight {@link Product} entities of type CARD
      */
     public List<Product> getCardsforHomepage() {
-        return productRepository.findTop8ByProductTypeOrderByDateAddedDesc(Product.ProductType.CARD);
+        return productRepository.findTop8ByProductTypeAndStockGreaterThanOrderByDateAddedDesc(Product.ProductType.CARD, 0);
     }
 
     /**

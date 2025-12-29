@@ -4,6 +4,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.swyr.backend.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -28,6 +31,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * @return a list of {@link Product} entities matching the given type
      */
     List<Product> findByProductType(Product.ProductType type);
+    List<Product> findByProductTypeAndStockGreaterThanOrderByDateAddedDesc(Product.ProductType type, int stock);
 
     /**
      * Retrieves the five most recently added products.
@@ -51,6 +55,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * @return a list of the latest eight {@link Product} entities of the given type
      */
     List<Product> findTop8ByProductTypeOrderByDateAddedDesc(Product.ProductType type);
+    List<Product> findTop8ByProductTypeAndStockGreaterThanOrderByDateAddedDesc(Product.ProductType type, int stock);
 
     /**
      * Retrieves the three most recently added products of a specific type.
@@ -88,4 +93,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      */
     @Query("SELECT p.seriesName FROM Product p WHERE p.productType = :type GROUP BY p.seriesName")
     List<String> findSeriesNames(Product.ProductType type);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Product p SET p.stock = p.stock - :quantity WHERE p.id = :id AND p.stock >= :quantity")
+    int decreaseStock(@Param("quantity") int quantity, @Param("id") Long id);
 }

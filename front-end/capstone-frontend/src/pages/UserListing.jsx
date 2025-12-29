@@ -81,7 +81,10 @@ function UserListing() {
                 min="0"
                 placeholder="Price"
                 value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={(e) => {
+                  const value = Math.max(0, Number(e.target.value));
+                  setPrice(value);
+                }}
             />
 
             <Button disabled={!file || loading} onClick={submit}>

@@ -40,7 +40,11 @@ function Cart() {
     const allItems = {};
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      allItems[key] = parseInt(localStorage.getItem(key)) || 0;
+      const qty = parseInt(localStorage.getItem(key), 10);
+
+      if (!isNaN(qty) && qty > 0) {
+      allItems[key] = qty;
+      }
     }
     setQuantities(allItems);
   }, []);
@@ -53,6 +57,10 @@ function Cart() {
     }
 
     const keys = Object.keys(allItems);
+    if (keys.length === 0) {
+      setProducts([]);
+      return;
+    }
 
     const fetchProducts = async () => {
       try {
@@ -89,6 +97,9 @@ function Cart() {
               <p className="font-bold max-w-40">{product.productName}</p>
             </div>
             <div className="flex gap-10 pr-4">
+              <p className="text-sm text-gray-500 mt-1">
+                Stock: {product.stock - (quantities[product.productID] || 0)}
+              </p>
               <div className="flex gap-2">
                 <p>Qty: </p>
                 <button
@@ -97,7 +108,7 @@ function Cart() {
                 >
                   -
                 </button>
-                <p className="w-5 text-center">{localStorage.getItem(product.productID)}</p>
+                <p className="w-5 text-center">{quantities[product.productID]}</p>
                 <button
                   onClick={() => addQty(product.stock, product.productID)}
                   className="border border-gray-300 rounded px-1"

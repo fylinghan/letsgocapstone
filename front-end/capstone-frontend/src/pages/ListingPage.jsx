@@ -22,7 +22,8 @@ function ListingPage() {
         setProduct(data);
 
         const stored = localStorage.getItem(data.productID);
-        setInCart(stored ? parseInt(stored) : 0);
+        setInCart(stored ? parseInt(stored, 10) : 0);
+
       } catch (err) {
         console.error("Fetch error:", err);
       } finally {
@@ -62,6 +63,7 @@ function ListingPage() {
     setQuantity(1);
     setAdded(true);
   };
+
 
   return (
     <div className="flex justify-center">

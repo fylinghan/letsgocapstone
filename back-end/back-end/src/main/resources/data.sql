@@ -15,9 +15,9 @@ INSERT INTO products (stock, price, productname, seriesname, dateadded, productt
 (20, 49.99, 'Corvi Deck', 'Corvi Series', '2025-12-07', 'DECK', '/images/deck/corvi.jpg', 'bob@example.com'),
  
 -- Cards
-(200, 5.99, 'Bulbasaur Card', 'Pokemon Series', '2025-09-22', 'CARD', '/cards/bulbasaur.jpg', 'charlie@example.com'),
-(150, 6.99, 'Pikachu Card', 'Pokemon Series', '2025-10-05', 'CARD', '/cards/pikachu.jpg', 'charlie@example.com'),
-(120, 7.99, 'Umbreon Card', 'Pokemon Series', '2025-10-18', 'CARD', '/cards/umbreon.jpg', 'alice@example.com');
+(200, 5.99, 'Bulbasaur Card', 'Mega Evolution', '2025-09-22', 'CARD', '/cards/bulbasaur.jpg', 'charlie@example.com'),
+(150, 6.99, 'Pikachu Card', 'Surging Sparks', '2025-10-05', 'CARD', '/cards/pikachu.jpg', 'charlie@example.com'),
+(120, 7.99, 'Umbreon Card', 'Eevee Grove', '2025-10-18', 'CARD', '/cards/umbreon.jpg', 'alice@example.com');
  
 -- Insert an additional user
 INSERT INTO userstable (email, pw) VALUES

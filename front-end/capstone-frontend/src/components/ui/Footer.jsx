@@ -13,7 +13,7 @@ function Footer() {
           <img className="w-40 p-2" src={Martlogo} alt="website logo" />
           <div className="flex gap-4"> 
             <SocialIcon url="https://facebook.com" style={{ height: 35, width: 35}} />
-            <SocialIcon url="https://instagram.com/lynnnister" style={{ height: 35, width: 35 }} />
+            <SocialIcon url="https://instagram.com/" style={{ height: 35, width: 35 }} />
           </div>
         </div>
 

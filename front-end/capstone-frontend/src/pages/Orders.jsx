@@ -29,6 +29,12 @@ function Orders() {
   if (error)
     return <p className="text-center mt-10 text-red-500">{error}</p>;
 
+  const calculateOrderTotal = (orderedItems) => {
+    return orderedItems.reduce((sum, item) => {
+      return sum + item.quantity * item.product.price;
+    }, 0);
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
       <h1 className="text-2xl font-bold">My Orders</h1>
@@ -87,6 +93,11 @@ function Orders() {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="flex justify-end border-t pt-4">
+              <p className="text-lg font-bold">
+                Total: ${calculateOrderTotal(order.orderedItems).toFixed(2)}
+              </p>
             </div>
           </Card>
         ))

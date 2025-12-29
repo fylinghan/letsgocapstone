@@ -14,7 +14,7 @@ function Checkout() {
         quantity: Number(value)
     }));
 
-   const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     shippingAddress: "",
     email: getCookie("user") || "",   // initialize from cookie
     orderedItems: orderedItems
@@ -28,32 +28,39 @@ function Checkout() {
     }));
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  console.log(formData)
-  try {
-    const response = await fetch("http://localhost:8080/order/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(formData) // send your object as JSON
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to submit order");
+    if (!formData.email) {
+        alert("You must be logged in to place an order. Redirecting to login...");
+        // Pass state so login page knows to redirect back here after successful login
+        navigate("/login", { state: { from: "/checkout" } });
+        return;
     }
 
-    const data = await response.json();
-    console.log("Order submitted successfully:", data);
-    localStorage.clear();
-    navigate("/thankyou", {state: {orderId: data}});
-  } catch (error) {
-    alert("Error submitting order, please check cart:", error);
-    navigate("/cart");
-  }
-};
+    try {
+        const response = await fetch("http://localhost:8080/order/submit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+        throw new Error("Failed to submit order");
+        }
+
+        const data = await response.json();
+
+        localStorage.clear();
+        navigate("/thankyou", { state: { orderId: data } });
+    } catch (error) {
+        alert("Error submitting order. Please check your cart.");
+        navigate("/cart");
+    }
+    };
+
 
 
 
